@@ -1,0 +1,688 @@
+{
+  "size": 142677,
+  "row-range": "0---142676",
+  "children": [
+    {
+      "size": 14268,
+      "row-range": "0---14267",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "0---1426",
+          "sub-cat": 0,
+          "name": "Ashville---Austin"
+        },
+        {
+          "size": 1427,
+          "row-range": "1426---2852",
+          "sub-cat": 0,
+          "name": "Austin---Austin"
+        },
+        {
+          "size": 1427,
+          "row-range": "2852---4278",
+          "sub-cat": 0,
+          "name": "Austin---Austin"
+        },
+        {
+          "size": 1427,
+          "row-range": "4278---5704",
+          "sub-cat": 0,
+          "name": "Austin---Austin"
+        },
+        {
+          "size": 1427,
+          "row-range": "5704---7130",
+          "sub-cat": 0,
+          "name": "Austin---Austin"
+        },
+        {
+          "size": 1427,
+          "row-range": "7130---8556",
+          "sub-cat": 0,
+          "name": "Austin---Austin"
+        },
+        {
+          "size": 1427,
+          "row-range": "8556---9982",
+          "sub-cat": 0,
+          "name": "Austin---Austin"
+        },
+        {
+          "size": 1427,
+          "row-range": "9982---11408",
+          "sub-cat": 0,
+          "name": "Austin---Boston"
+        },
+        {
+          "size": 1427,
+          "row-range": "11408---12834",
+          "sub-cat": 0,
+          "name": "Boston---Boston"
+        },
+        {
+          "size": 1434,
+          "row-range": "12834---14267",
+          "sub-cat": 0,
+          "name": "Boston---Boston"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "Ashville---Boston"
+    },
+    {
+      "size": 14268,
+      "row-range": "14267---28534",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "14267---15693",
+          "sub-cat": 0,
+          "name": "Boston---Chicago"
+        },
+        {
+          "size": 1427,
+          "row-range": "15693---17119",
+          "sub-cat": 0,
+          "name": "Chicago---Chicago"
+        },
+        {
+          "size": 1427,
+          "row-range": "17119---18545",
+          "sub-cat": 0,
+          "name": "Chicago---Chicago"
+        },
+        {
+          "size": 1427,
+          "row-range": "18545---19971",
+          "sub-cat": 0,
+          "name": "Chicago---Chicago"
+        },
+        {
+          "size": 1427,
+          "row-range": "19971---21397",
+          "sub-cat": 0,
+          "name": "Chicago---Denver"
+        },
+        {
+          "size": 1427,
+          "row-range": "21397---22823",
+          "sub-cat": 0,
+          "name": "Denver---Denver"
+        },
+        {
+          "size": 1427,
+          "row-range": "22823---24249",
+          "sub-cat": 0,
+          "name": "Denver---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "24249---25675",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "25675---27101",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1434,
+          "row-range": "27101---28534",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "Boston---LA"
+    },
+    {
+      "size": 14268,
+      "row-range": "28534---42801",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "28534---29960",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "29960---31386",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "31386---32812",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "32812---34238",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "34238---35664",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "35664---37090",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "37090---38516",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "38516---39942",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "39942---41368",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1434,
+          "row-range": "41368---42801",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "LA---LA"
+    },
+    {
+      "size": 14268,
+      "row-range": "42801---57068",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "42801---44227",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "44227---45653",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "45653---47079",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "47079---48505",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "48505---49931",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "49931---51357",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "51357---52783",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "52783---54209",
+          "sub-cat": 0,
+          "name": "LA---LA"
+        },
+        {
+          "size": 1427,
+          "row-range": "54209---55635",
+          "sub-cat": 0,
+          "name": "LA---Nashville"
+        },
+        {
+          "size": 1434,
+          "row-range": "55635---57068",
+          "sub-cat": 0,
+          "name": "Nashville---Nashville"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "LA---Nashville"
+    },
+    {
+      "size": 14268,
+      "row-range": "57068---71335",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "57068---58494",
+          "sub-cat": 0,
+          "name": "Nashville---Nashville"
+        },
+        {
+          "size": 1427,
+          "row-range": "58494---59920",
+          "sub-cat": 0,
+          "name": "Nashville---New Orleans"
+        },
+        {
+          "size": 1427,
+          "row-range": "59920---61346",
+          "sub-cat": 0,
+          "name": "New Orleans---New Orleans"
+        },
+        {
+          "size": 1427,
+          "row-range": "61346---62772",
+          "sub-cat": 0,
+          "name": "New Orleans---New Orleans"
+        },
+        {
+          "size": 1427,
+          "row-range": "62772---64198",
+          "sub-cat": 0,
+          "name": "New Orleans---New Orleans"
+        },
+        {
+          "size": 1427,
+          "row-range": "64198---65624",
+          "sub-cat": 0,
+          "name": "New Orleans---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "65624---67050",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "67050---68476",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "68476---69902",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1434,
+          "row-range": "69902---71335",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "Nashville---New York City"
+    },
+    {
+      "size": 14268,
+      "row-range": "71335---85602",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "71335---72761",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "72761---74187",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "74187---75613",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "75613---77039",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "77039---78465",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "78465---79891",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "79891---81317",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "81317---82743",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "82743---84169",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1434,
+          "row-range": "84169---85602",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "New York City---New York City"
+    },
+    {
+      "size": 14268,
+      "row-range": "85602---99869",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "85602---87028",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "87028---88454",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "88454---89880",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "89880---91306",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "91306---92732",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "92732---94158",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "94158---95584",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "95584---97010",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "97010---98436",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1434,
+          "row-range": "98436---99869",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "New York City---New York City"
+    },
+    {
+      "size": 14268,
+      "row-range": "99869---114136",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "99869---101295",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "101295---102721",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "102721---104147",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "104147---105573",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "105573---106999",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "106999---108425",
+          "sub-cat": 0,
+          "name": "New York City---New York City"
+        },
+        {
+          "size": 1427,
+          "row-range": "108425---109851",
+          "sub-cat": 0,
+          "name": "New York City---Oakland"
+        },
+        {
+          "size": 1427,
+          "row-range": "109851---111277",
+          "sub-cat": 0,
+          "name": "Oakland---Portland"
+        },
+        {
+          "size": 1427,
+          "row-range": "111277---112703",
+          "sub-cat": 0,
+          "name": "Portland---Portland"
+        },
+        {
+          "size": 1434,
+          "row-range": "112703---114136",
+          "sub-cat": 0,
+          "name": "Portland---Portland"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "New York City---Portland"
+    },
+    {
+      "size": 14268,
+      "row-range": "114136---128403",
+      "children": [
+        {
+          "size": 1427,
+          "row-range": "114136---115562",
+          "sub-cat": 0,
+          "name": "Portland---San Francisco"
+        },
+        {
+          "size": 1427,
+          "row-range": "115562---116988",
+          "sub-cat": 0,
+          "name": "San Francisco---San Francisco"
+        },
+        {
+          "size": 1427,
+          "row-range": "116988---118414",
+          "sub-cat": 0,
+          "name": "San Francisco---San Francisco"
+        },
+        {
+          "size": 1427,
+          "row-range": "118414---119840",
+          "sub-cat": 0,
+          "name": "San Francisco---San Francisco"
+        },
+        {
+          "size": 1427,
+          "row-range": "119840---121266",
+          "sub-cat": 0,
+          "name": "San Francisco---San Francisco"
+        },
+        {
+          "size": 1427,
+          "row-range": "121266---122692",
+          "sub-cat": 0,
+          "name": "San Francisco---San Francisco"
+        },
+        {
+          "size": 1427,
+          "row-range": "122692---124118",
+          "sub-cat": 0,
+          "name": "San Francisco---Santacruz"
+        },
+        {
+          "size": 1427,
+          "row-range": "124118---125544",
+          "sub-cat": 0,
+          "name": "Santacruz---San Diego"
+        },
+        {
+          "size": 1427,
+          "row-range": "125544---126970",
+          "sub-cat": 0,
+          "name": "San Diego---San Diego"
+        },
+        {
+          "size": 1434,
+          "row-range": "126970---128403",
+          "sub-cat": 0,
+          "name": "San Diego---San Diego"
+        }
+      ],
+      "sub-cat": 10,
+      "name": "Portland---San Diego"
+    },
+    {
+      "size": 14274,
+      "row-range": "128403---142676",
+      "children": [
+        {
+          "size": 1428,
+          "row-range": "128403---129830",
+          "sub-cat": 0,
+          "name": "San Diego---San Diego"
+        },
+        {
+          "size": 1428,
+          "row-range": "129830---131257",
+          "sub-cat": 0,
+          "name": "San Diego---Seattle"
+        },
+        {
+          "size": 1428,
+          "row-range": "131257---132684",
+          "sub-cat": 0,
+          "name": "Seattle---Seattle"
+        },
+        {
+          "size": 1428,
+          "row-range": "132684---134111",
+          "sub-cat": 0,
+          "name": "Seattle---Seattle"
+        },
+        {
+          "size": 1428,
+          "row-range": "134111---135538",
+          "sub-cat": 0,
+          "name": "Seattle---Washington D.C."
+        },
+        {
+          "size": 1428,
+          "row-range": "135538---136965",
+          "sub-cat": 0,
+          "name": "Washington D.C.---Washington D.C."
+        },
+        {
+          "size": 1428,
+          "row-range": "136965---138392",
+          "sub-cat": 0,
+          "name": "Washington D.C.---Washington D.C."
+        },
+        {
+          "size": 1428,
+          "row-range": "138392---139819",
+          "sub-cat": 0,
+          "name": "Washington D.C.---Washington D.C."
+        },
+        {
+          "size": 1428,
+          "row-range": "139819---141246",
+          "sub-cat": 0,
+          "name": "Washington D.C.---Washington D.C."
+        },
+        {
+          "size": 1431,
+          "row-range": "141246---142676",
+          "sub-cat": 0,
+          "name": "Washington D.C.---Washington D.C."
+        }
+      ],
+      "sub-cat": 10,
+      "name": "San Diego---Washington D.C."
+    }
+  ],
+  "sub-cat": 10,
+  "name": "Ashville---Washington D.C."
+}
