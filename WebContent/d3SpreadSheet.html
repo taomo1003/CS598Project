@@ -8,19 +8,18 @@
 <style>
 .title {
 	fill: silver;
-	
 }
 </style>
 
 </head>
 <body>
   Start:<br>
-  <input type="text" name="start">
+  <input type="text" name="start" value = '5'>
   <br>
   End:<br>
-  <input type="text" name="end">
+  <input type="text" name="end" value = '100'>
   <br><br>
-  <button onclick='loadDataFromForm()'></button>
+  <button onclick='loadDataFromForm()'>showData</button>
 <script>
 function loadDataFromForm(){
 	var sta = +$('input[name=start]').val();
@@ -30,24 +29,24 @@ function loadDataFromForm(){
 	loadData(sta,end,0,4);
 }
 
-
-
-var width = 120*20;
-var height = 501*20;
-
-var barWidth = 120;
-var barHeight = 20;
-
-var border=1;
-var bordercolor='black';
-
-var margin = {top: 150, right: 50, bottom: 20, left: 500};
-
-
 function loadData(start,end,colStart,colEnd){
-	d3.select("svg").remove();
-	var svg = d3.select("body").append("svg").attr("width",width).attr("height",height);
+	var width = 50*20;
+	var height = (end-start+10)*20;
 
+	var barWidth = 120;
+	var barHeight = 20;
+
+	var border=1;
+	var bordercolor='black';
+
+	var margin = {top: 50, right: 50, bottom: 20, left: 0};
+	
+	d3.select(".spreadSheetSVG").remove();
+	
+	var svg = d3.select("body").append("svg").attr("class","spreadSheetSVG").attr("width",width).attr("height",height).attr("transform","translate("+ 500  +", "+ 100+")");
+	
+	
+	//left index
 	var recGroup  = svg.append("g").attr("transform","translate("+ (margin.left+ 15 )  +", "+ (margin.top)+")")
 	var textGroup  = svg.append("g").attr("transform","translate("+ (margin.left + 25)  +", "+ (margin.top + barHeight - 3)+")")
 
@@ -68,6 +67,29 @@ function loadData(start,end,colStart,colEnd){
 	    .attr("y", function(d,i){ return i * barHeight})
 	    .attr("front-family", "sans-serif")
 	    .text(function(d){return d});
+	
+	//title
+	var recGroup  = svg.append("g").attr("transform","translate("+ 130  +", "+ 30+")")
+	var textGroup  = svg.append("g").attr("transform","translate("+ 140  +", "+ 45+")")
+
+	var indexArray = ["city","id","host_id","host_name"];
+
+	recGroup.selectAll("rect").data(indexArray)
+		.enter().append("rect").attr("class","title")
+		.attr("x",  function(d,i) { return i * barWidth})
+	    .attr("width", barWidth)
+	    .attr("y", 0)
+	    .attr("height", barHeight)
+	    .style("stroke", bordercolor)
+   		.style("stroke-width", border);
+	
+	textGroup.selectAll("text").data(indexArray)
+	    .enter().append("text")
+	    .attr("x",  function(d,i) { return i * barWidth + 10})
+	    .attr("y", 0)
+	    .attr("front-family", "sans-serif")
+	    .text(function(d){return d});
+	
 	
 	
 	for (var i = colStart ; i < colEnd ; i++){(function(i){
