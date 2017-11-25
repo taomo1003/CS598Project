@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>D3 SpreadSheet</title>
+<style>
+.title {
+	fill: silver;
+	
+}
+</style>
+
+</head>
+<body>
+  Start:<br>
+  <input type="text" name="start">
+  <br>
+  End:<br>
+  <input type="text" name="end">
+  <br><br>
+  <button onclick='loadDataFromForm()'></button>
+<script>
+function loadDataFromForm(){
+	var sta = +$('input[name=start]').val();
+	var end = +$('input[name=end]').val();
+	
+	if (end - sta > 500) end = sta + 500;
+	loadData(sta,end,0,4);
+}
+
+
+
+var width = 120*20;
+var height = 501*20;
+
+var barWidth = 120;
+var barHeight = 20;
+
+var border=1;
+var bordercolor='black';
+
+var margin = {top: 150, right: 50, bottom: 20, left: 500};
+
+
+function loadData(start,end,colStart,colEnd){
+	d3.select("svg").remove();
+	var svg = d3.select("body").append("svg").attr("width",width).attr("height",height);
+
+	var recGroup  = svg.append("g").attr("transform","translate("+ (margin.left+ 15 )  +", "+ (margin.top)+")")
+	var textGroup  = svg.append("g").attr("transform","translate("+ (margin.left + 25)  +", "+ (margin.top + barHeight - 3)+")")
+
+	var indexArray = Array.apply(null, Array(end-start)).map(function (_, i) {return i+start+1;});
+
+	recGroup.selectAll("rect").data(indexArray)
+		.enter().append("rect").attr("class","title")
+		.attr("x",  10)
+	    .attr("width", barWidth-15)
+	    .attr("y", function(d,i){ return i * barHeight})
+	    .attr("height", barHeight)
+	    .style("stroke", bordercolor)
+   		.style("stroke-width", border);
+	
+	textGroup.selectAll("text").data(indexArray)
+	    .enter().append("text")
+	    .attr("x",  10)
+	    .attr("y", function(d,i){ return i * barHeight})
+	    .attr("front-family", "sans-serif")
+	    .text(function(d){return d});
+	
+	
+	for (var i = colStart ; i < colEnd ; i++){(function(i){
+		d3.json("MockGetData?col="+i+"&start="+start+"&end="+end+"&skipFirst=T",function(error,data){
+			
+			var recGroup  = svg.append("g").attr("transform","translate("+ (margin.left + (i-colStart + 1)*barWidth)  +", "+ margin.top+")")
+			var textGroup  = svg.append("g").attr("transform","translate("+ (margin.left + 10 + (i-colStart + 1)*barWidth)  +", "+ (margin.top+ barHeight - 3)+")")
+
+			if (error) throw error;
+			
+			recGroup.selectAll("rect").data(data)
+				.enter().append("rect")
+				.attr("x",  10)
+			    .attr("width", barWidth)
+			    .attr("y", function(d,i){ return i * barHeight})
+			    .attr("height", barHeight)
+			    .style("stroke", bordercolor)
+		   		.style("fill", "none")
+		   		.style("stroke-width", border);
+			
+			textGroup.selectAll("text").data(data)
+			    .enter().append("text")
+			    .attr("x",  10)
+			    .attr("y", function(d,i){ return i * barHeight})
+			    .attr("front-family", "sans-serif")
+			    .text(function(d){return d});
+	    })
+		})(i);	
+	}
+}
+
+</script>
+</body>
+</html>

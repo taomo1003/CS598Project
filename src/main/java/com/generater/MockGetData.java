@@ -41,7 +41,7 @@ public class MockGetData extends HttpServlet {
         response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
-        Boolean skipFirst = false;
+        Boolean skipFirst = request.getParameter("skipFirst").contains("T");
         String temp = request.getParameter("col");
         int col = Integer.valueOf(temp);
         int start = Integer.valueOf(request.getParameter("start"));
@@ -52,7 +52,7 @@ public class MockGetData extends HttpServlet {
 
         JSONArray jsonArray = new JSONArray();
         for (String str : data){
-        	jsonArray.add(str);
+        	if (str!=null) jsonArray.add(str);
         }
         
         out.print(jsonArray.toJSONString());

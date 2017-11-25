@@ -5,6 +5,8 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <style>
 
 .node rect {
@@ -26,9 +28,59 @@ path.link {
   stroke-width: 1.5px;
 }
 
-
-
 </style>
+
+<style>
+li {
+    list-style: none;
+}
+li:before {
+    content: "✓ ";
+}
+
+input {
+    border: none;
+    width: 80px;
+    font-size: 14px;
+    padding: 2px;
+}
+
+input:hover {
+    background-color: #eee;
+}
+
+input:focus {
+    background-color: #ccf;
+}
+
+input:not(:focus) {
+    text-align: right;
+}
+
+table {
+    border-collapse: collapse; 
+    position: absolute;
+    top: 120px;
+    left: 550px;
+}
+
+td {
+    border: 1px solid #999;
+    padding: 0;
+}
+
+tr:first-child td, td:first-child {
+    background-color: #ccc;
+    padding: 1px 3px;
+    font-weight: bold;
+    text-align: center;
+}
+
+footer {
+    font-size: 80%;
+}
+</style>
+
 </head>
 <body>
 <div class="alert alert-success" role="alert">
@@ -38,7 +90,12 @@ path.link {
 	<button type="button" onclick="display('RandomEven')" class="btn btn-success">RandomEven</button>
 	<button type="button" onclick="display('ByName')" class="btn btn-success">ByName</button>
 </div>
-<script src="//d3js.org/d3.v3.min.js"></script>
+<div>
+	<table></table>
+</div>
+
+
+
 <script>
 
 var margin = {top: 20, right: 500, bottom: 30, left: 20},
@@ -200,3 +257,57 @@ function color(d) {
 }
 
 </script>
+
+<script>
+for (var j = 0 ; j < 5 ; j++){
+	(function(j){
+		$.getJSON('MockGetData?col='+j+'&start=10000&end=10050&skipFirst=T', function(data) {
+			 letter = String.fromCharCode("A".charCodeAt(0)+j);
+			 for (var i=0; i<data.length; i++){
+				   localStorage[letter+(i+1)] = data[i];
+			   }
+			});
+	})(j);
+}
+
+for (var i=0; i<60; i++) {
+    var row = document.querySelector("table").insertRow(-1);
+    for (var j=0; j<6; j++) {
+        var letter = String.fromCharCode("A".charCodeAt(0)+j-1);
+        row.insertCell(-1).innerHTML = i&&j ? "<input 	id='"+ letter+i +"'/>" : i||letter;
+    }
+}
+
+
+
+var DATA={}, INPUTS=[].slice.call(document.querySelectorAll("input"));
+INPUTS.forEach(function(elm) {
+	//The onfocus event occurs when an element gets focus.
+    elm.onfocus = function(e) {
+        e.target.value = localStorage[e.target.id] || "";
+    };
+    
+    //The onblur event occurs when an object loses focus.
+    elm.onblur = function(e) {
+        localStorage[e.target.id] = e.target.value;
+        computeAll();
+    };
+    
+    var getter = function() {
+        var value = localStorage[elm.id] || "";
+        if (value.charAt(0) == "=") {
+            with (DATA) return eval(value.substring(1));
+        } else { return isNaN(parseFloat(value)) ? value : parseFloat(value); }
+    };
+    
+    //The Object.defineProperty() method defines a 
+    //new property directly on an object, or modifies 
+    //an existing property on an object, and returns the object.
+    Object.defineProperty(DATA, elm.id, {get:getter});
+    Object.defineProperty(DATA, elm.id.toLowerCase(), {get:getter});
+});
+(window.computeAll = function() {
+    INPUTS.forEach(function(elm) { try { elm.value = DATA[elm.id]; } catch(e) {} });
+})();
+</script>
+
