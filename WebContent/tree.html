@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="aggregrateBar.js"></script>
 <style>
 
 .node rect {
@@ -29,11 +34,37 @@ path.link {
 }
 
 .title {
-	fill: silver;
+	fill: steelblue;
+	fill-opacity: .5;
 }
 
 </style>
+<style>
 
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
+
+#sel1,#sel2 {
+  	width : 100px;
+  	display:inline-block;
+}
+
+#result{
+	font-size : 15px;
+	display:inline-block;
+	fill: steelblue;
+}
+
+</style>
 
 </head>
 <body>
@@ -43,7 +74,37 @@ path.link {
 <div>
 	<button type="button" onclick="display('RandomEven')" class="btn btn-success">RandomEven</button>
 	<button type="button" onclick="display('ByName')" class="btn btn-success">ByName</button>
+	Column:
+  	<select class="form-control" id="sel1">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option selected="selected">4</option>
+    </select>
+    <label for="sel2">Function:</label>
+    <select class="form-control" id="sel2">
+    <option>Sum</option>
+    <option>Average</option>
+    <option>Median</option>
+    <option>Max</option>
+    <option>Min</option>
+  	</select>
+    Result:
+    <span class="label label-info" id="result" ></span>
 </div>
+<script>
+var max = 0;
+var min = 0;
+var median = 0;
+var avg = 0;
+var sum = 0;
+var aggInput = [];
+var aggInputSta = [];
+
+$("#sel2").change(function() {
+	  showResult(aggInput);
+});
+</script>
 
 <script>
 
@@ -64,6 +125,7 @@ var diagonal = d3.svg.diagonal()
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
+    .attr("transform", "translate(" + 0 + "," + 200 + ")")
     .style("position","absolute")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -120,6 +182,7 @@ function update(source) {
     	  var range = d.rowRange.split('---');
     	  var sta = +range[0];
     	  var end = +range[1];
+    	  showBar(sta,end);
     	  if (end - sta > 500) end = sta + 500;
     	  loadData(sta,end,0,4);
     	  click(d);
@@ -255,7 +318,7 @@ function loadData(start,end,colStart,colEnd){
 	var recGroup  = svg.append("g").attr("transform","translate("+ 90  +", "+ 30+")")
 	var textGroup  = svg.append("g").attr("transform","translate("+ 100  +", "+ 45+")")
 
-	var indexArray = ["city","id","host_id","host_name"];
+	var indexArray = ["city","id","host_name","price"];
 
 	recGroup.selectAll("rect").data(indexArray)
 		.enter().append("rect").attr("class","title")
@@ -308,4 +371,146 @@ function loadData(start,end,colStart,colEnd){
 
 </script>
 
+<script>
+function showBar(sta,end){
+	d3.select(".agg_bar").remove();
+	var svg = d3.select("body").append("svg")
+	          .attr("class","agg_bar")
+	          .attr("width",500)
+	          .attr("height",200)
+	          .style("position","absolute"),
+    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 300 - margin.left - margin.right,
+    height = 160 - margin.top - margin.bottom;
+
+	var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    	y = d3.scaleLinear().rangeRound([height, 0]);
+
+	var g = svg.append("g")
+    	.attr("transform", "translate(" + (margin.left + 200) + "," + margin.top + ")");
+
+	function getFreq(data,sta,end){
+		var result = [];
+		var name = "";
+		var count = 0;
+		var subCat = 0;
+		var prei = sta;
+		for (i = 0 ; i < data.length ; i++){
+				if (name === data[i]){
+					count++;
+				} else {
+					if (count!=0) {
+					result.push({'name':name,'freq':count, 'start': prei , 'end':(prei+count)});
+				}
+			subCat++;
+			prei = prei+count + 1;
+			count = 0;
+			name = data[i];
+			}
+		}
+		if (count!=0) {
+			result.push({'name':name,'freq':count, 'start': prei , 'end':(prei+i)});
+		}
+		result.subCat = subCat;
+		return result;
+	}
+
+
+	d3.json("MockGetData?col="+0+"&start="+sta+"&end="+end+"&skipFirst=T", function(error, data) {
+  		if (error) throw error;
+  
+  		data = getFreq(data,sta,end);
+  
+  		x.domain(data.map(function(d) { return d.name; }));
+  		y.domain([0, d3.max(data, function(d) { return d.freq; })]);
+
+  		var canvas = svg.append("g").attr("transform", 
+          	"translate(" + margin.left + "," + margin.top  + ")");
+	
+ 		var border = canvas.append("rect").attr("x", -1 * margin.left).attr("y",-1 * margin.top)
+	  		.attr("width", 500).attr("height", 200)
+	  		.attr('fill', 'none')
+	  		.attr('stroke', '#2378ae')
+	  		.attr('stroke-width', '3');
+	
+  		var textName = canvas.append("text").attr("x",0).attr("y",20)
+			.attr("font-family","sans-serif")
+			.attr("font-size","7pt")
+			.text(data[0].name+ "---" + data[data.length-1].name);
+
+  		var textRange = canvas.append("text").attr("x",0).attr("y",60)
+			.attr("font-family","sans-serif")
+			.attr("font-size","7pt")
+			.text("Row - Range:    " + sta + "---" + end);
+
+  		var textSubCat = canvas.append("text").attr("x",0).attr("y",100)
+    		.attr("font-family","sans-serif")
+    		.attr("font-size","7pt")
+    		.text("Sub-Category:    " + data.subCat);
+
+  		var textSubCat = canvas.append("text").attr("x",0).attr("y",140)
+    		.attr("font-family","sans-serif")
+    		.attr("font-size","7pt")
+    		.text("Size:    " + (end - sta));
+
+  		g.append("g")
+      		.attr("class", "axis axis--x")
+      		.attr("transform", "translate(0," + height + ")")
+      		.call(d3.axisBottom(x))
+      		.selectAll("text")	
+            .style("text-anchor", "end")
+            .style("font-size", "6pt")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", function(d) {
+                return "rotate(-65)" 
+                });
+
+  		g.append("g")
+      		.attr("class", "axis axis--y")
+      		.call(d3.axisLeft(y))
+    		.append("text")
+      		.attr("transform", "rotate(-90)")
+      		.attr("y", 6)
+      		.attr("dy", "0.71em")
+      		.attr("text-anchor", "end")
+      		.text("Frequency");
+
+  		g.selectAll(".bar")
+    		.data(data)
+    		.enter().append("rect")
+    	  	.attr("class", "bar")
+      		.attr("x", function(d) { return x(d.name); })
+      		.attr("y", function(d) { return y(d.freq); })
+      		.attr("width", x.bandwidth())
+      		.attr("height", function(d) { return height - y(d.freq); })
+      		.on("click", function (d) {
+      			if (aggInputSta.indexOf(d.start) === -1) {
+      			  aggInput.push([d.start,d.end]);
+      			  aggInputSta.push(d.start);
+      		      d3.select(this).style("fill", "green");
+      			}
+      			else {
+      			  const index = aggInputSta.indexOf(d.start);
+      			  aggInput.splice(index, 1);
+      			  aggInputSta.splice(index, 1);
+      		      d3.select(this).style("fill", "steelblue");
+      			}
+      			console.log(aggInput);
+      			
+      			if (aggInputSta.length == 0) {
+      				max = 0;
+      				min = 0;
+      				median = 0;
+      				avg = 0;
+      				sum = 0;
+      				showResult(aggInput);
+      			} else {
+          			getResult(aggInput);
+      			}
+      			
+      		});
+		});
+}
+</script>
 </body>

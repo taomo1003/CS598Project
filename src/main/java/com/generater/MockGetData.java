@@ -1,5 +1,7 @@
 package main.java.com.generater;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,8 +38,12 @@ public class MockGetData extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ClassLoader classLoader = getClass().getClassLoader();
+		String fileName;
+		String sortTypeTemp = request.getParameter("sortType");
+		if (sortTypeTemp==null) sortTypeTemp = "";
+	    fileName = "airbnb"+ sortTypeTemp +".csv";
 	    
-		String csvFile = classLoader.getResource("airbnb.csv").getPath();
+		String csvFile = classLoader.getResource(fileName).getPath();
         response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
